@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nayab Safdar | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <!-- NAVBAR -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-logo">NAYAB SAFDAR</div>
+        <ul class="nav-links">
+          <li><a href="index.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="experience.html">Experience</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="content">
+
+        <!-- ABOUT SECTION -->
+        <section class="about-section">
+          <div class="about-shell">
+
+            <!-- CIRCLE PHOTO -->
+            <div class="about-avatar-wrapper">
+                <div class="about-avatar">
+                    <img src="assets/IMG_5929.JPG" alt="Photo of Nayab Safdar">
+                  </div>
+            </div>
+
+            <!-- CARD -->
+            <div class="about-card">
+              <div class="about-heading">About Me</div>
+
+              <div class="about-title-row">
+                <p class="about-body" style="margin: 0; font-size: 1rem; color: var(--navy);">
+                  Hi, I’m <strong>Nayab Safdar</strong>, a senior at UMD majoring in Information Science with a minor in Risk Management, Ethics, and Privacy. 
+                  I’m also pursuing a Plus 1 Master’s in Business Analytics.
+                </p>
+              </div>
+
+              <p class="about-body">
+                My background spans data analytics, visualization, and predictive modeling with Python, R, SQL, and Excel, as well as UX research, accessibility, and sustainability-focused projects. 
+                I’m really interested in roles that let me bridge technical problem-solving with business strategy — like data analytics or technical consulting — where I can apply my skills while collaborating with teams and making sure solutions are both effective and responsible.
+              </p>
+
+              <div class="about-divider"></div>
+
+              <!-- SOCIAL ICONS ONLY -->
+              <div class="about-socials">
+                <span class="about-socials-label">Let’s connect:</span>
+
+                <div class="about-socials-icons">
+                  <!-- LinkedIn -->
+                  <a
+                    href="https://www.linkedin.com/in/nayabsafdar7"
+                    class="social-icon"
+                    aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    in
+                  </a>
+
+                  <!-- Email -->
+                  <a
+                    href="mailto:nayabsafdar28@gmail.com"
+                    class="social-icon"
+                    aria-label="Email"
+                  >
+                    @
+                  </a>
+
+                  <!-- GitHub (update href later) -->
+                  <a
+                    href="https://github.com/Naya26?tab=repositories"
+                    class="social-icon"
+                    aria-label="GitHub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                  gh
+                </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      © <span id="year"></span> Nayab Safdar · Portfolio
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

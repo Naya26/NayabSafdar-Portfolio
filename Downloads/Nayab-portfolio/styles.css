@@ -1,0 +1,582 @@
+/* ========== THEME ========== */
+
+:root {
+    /* Core palette: navy + white */
+    --navy-bg: #0f172a;      /* page background navy */
+    --navy: #0b1120;         /* deep navy for text / accents */
+    --navy-soft: #1e293b;    /* softer navy for borders */
+    --white: #ffffff;
+    --offwhite: #f9fafb;
+    --muted: #6b7280;
+    --accent: #1d4ed8;       /* bright navy/blue accent */
+  
+    --max-width: 1000px;
+    --radius-lg: 20px;
+    --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.35);
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Global text is dark navy on light backgrounds unless overridden */
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+  
+  /* ========== LAYOUT ========== */
+  
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  .content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 4rem;
+  }
+  
+  /* ========== NAVBAR ========== */
+  
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(18px);
+    background: rgba(15, 23, 42, 0.96);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+  }
+  
+  .navbar {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.9rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav-logo {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--white);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.4rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: var(--offwhite);
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 0.2rem;
+  }
+  
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--white), var(--accent));
+    transition: width 0.25s ease;
+  }
+  
+  .nav-links a:hover {
+    color: var(--white);
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* ========== ABOUT SECTION (circle + card + socials) ========== */
+  
+  .about-section {
+    position: relative;
+    padding-top: 5rem; /* space for floating circle */
+  }
+  
+  /* centers the card + circle */
+  .about-shell {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  
+  /* big circular profile area */
+  .about-avatar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 2;
+  }
+  
+  .about-avatar {
+    width: 190px;
+    height: 190px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #60a5fa, #1d4ed8);
+    border: 4px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+  }
+  
+  /* for when you add a real photo later */
+  .about-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;   /* fills the circle without distortion */
+    border-radius: 999px; /* ensure it stays round */
+  }
+  
+  .about-avatar-initials {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+  
+  /* main white card */
+  .about-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid #e5e7eb;
+    padding: 4.7rem 2.6rem 2.4rem; /* extra top padding for circle overlap */
+    box-shadow: var(--shadow-soft);
+  }
+  
+  /* text inside card is navy / muted gray */
+  .about-heading {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+  
+  .about-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-bottom: 1.1rem;
+  }
+  
+  .about-title-row h1 {
+    margin: 0;
+    font-size: 2.1rem;
+    color: var(--navy);
+  }
+  
+  .about-tagline {
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  
+  .about-body {
+    font-size: 0.98rem;
+    color: var(--navy);
+    margin-bottom: 1.9rem;
+  }
+  
+  /* subtle horizontal line */
+  .about-divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(148, 163, 184, 0.1),
+      rgba(148, 163, 184, 0.5),
+      rgba(148, 163, 184, 0.1)
+    );
+    margin-bottom: 1.4rem;
+  }
+  
+  /* socials row */
+  .about-socials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .about-socials-label {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  
+  /* circle icons row */
+  .about-socials-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  
+  .social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 2px solid var(--navy-soft);
+    background: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: var(--navy);
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease,
+      border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+  
+  .social-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--white);
+  }
+  
+  /* text links next to icons */
+  .social-text-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  
+  .social-text-link {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(148, 163, 184, 0.7);
+  }
+  
+  .social-text-link:hover {
+    color: var(--navy);
+    border-bottom-style: solid;
+  }
+  
+  /* ========== GENERIC SECTIONS / CARDS (for Projects & Experience) ========== */
+  
+  .section {
+    margin-top: 3rem;
+  }
+  
+  .section-header {
+    margin-bottom: 1.4rem;
+  }
+  
+  .section-kicker {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-top: 0.4rem;
+  }
+  
+  /* Descriptive text inside experience & project cards */
+ .card-description {
+    font-size: 0.95rem;
+    color: var(--navy);      /* <-- DARK TEXT FOR WHITE CARDS */
+    line-height: 1.6;
+  }
+  
+  /* Experience page intro paragraph should be white */
+  .experience-intro {
+    color: var(--white) !important;
+  }
+
+  /* cards on dark background = white panels like About card */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.6rem;
+    margin-top: 1rem;
+  }
+  
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    padding: 1.5rem 1.6rem;
+    box-shadow: var(--shadow-soft);
+    color: var(--navy);
+  }
+  
+  .card-title-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .card-meta {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.85rem;
+  }
+  
+  .card-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    color: var(--muted);
+    background: var(--offwhite);
+  }
+  
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    margin-top: 0.9rem;
+  }
+  
+  .card-link {
+    text-decoration: none;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+  }
+  
+  .card-link:hover {
+    border-bottom-color: var(--accent);
+  }
+  
+  /* Experience layout (two columns of white cards) */
+  .experience-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+    gap: 1.9rem;
+    margin-top: 1.2rem;
+  }
+  
+  .experience-column-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .experience-subheader {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--white);         /* <-- NOW WHITE */
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.9rem;
+  }
+  
+  .card-role {
+    font-size: 0.86rem;
+    color: var(--muted);
+  }
+  
+  /* Contact strip – white bar on navy bg */
+  .contact-strip {
+    margin-top: 3rem;
+    padding: 1.3rem 1.7rem;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-soft);
+    color: var(--navy);
+  }
+  
+  .contact-text {
+    font-size: 0.95rem;
+  }
+  
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .contact-link {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--white);
+    background: var(--navy);
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  
+  .contact-link:hover {
+    background: var(--accent);
+  }
+  
+  /* ========== FOOTER ========== */
+  
+  footer {
+    border-top: 1px solid rgba(15, 23, 42, 0.8);
+    padding: 1rem 1.75rem 1.3rem;
+    font-size: 0.8rem;
+    color: var(--offwhite);
+    text-align: center;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  
+  @media (max-width: 768px) {
+    .content {
+      padding-inline: 1.25rem;
+    }
+  
+    .about-avatar {
+      width: 160px;
+      height: 160px;
+    }
+  
+    .about-card {
+      padding: 4rem 1.6rem 2.1rem;
+    }
+  
+    .about-title-row h1 {
+      font-size: 1.8rem;
+    }
+  
+    .experience-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .about-socials {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  /* Vertical experience stack with sub-headers */
+
+.experience-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .experience-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space between header and cards */
+  }
+
+  /* ===== PROJECTS: vertical list, image on left, info on right ===== */
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;              /* spacing between project cards */
+    margin-top: 1.5rem;
+  }
+  
+  .project-item {
+    display: flex;
+    gap: 1.6rem;
+    align-items: stretch;
+    background: var(--white);
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    padding: 1.6rem 1.8rem;
+    box-shadow: var(--shadow-soft);
+  }
+  
+  /* square image area */
+  .project-media {
+    flex: 0 0 140px;        /* fixed width column */
+    max-width: 140px;
+    border-radius: 14px;
+    background: #e5e7eb;    /* light grey placeholder */
+    overflow: hidden;
+    aspect-ratio: 1 / 1;    /* keeps it square */
+  }
+  
+  /* actual image when you add one */
+  .project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;      
+    padding: 8px;             
+    background-color: #f9fafb; 
+  }
+  
+  /* text column */
+  .project-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .project-description {
+    color: var(--navy);
+  }
+  
+  /* mobile: stack image on top of text */
+  @media (max-width: 768px) {
+    .project-item {
+      flex-direction: column;
+    }
+  
+    .project-media {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 260px;
+    }
+  }
